@@ -10,22 +10,7 @@ function App() {
 
 
 
-  const intialTodoItem = [
-   
-    {id:"2",
-      name: "Go to College",
-      dueDate: "08/02/2022",
-    },
-    {id:"3",
-    name: "Go to work",
-    dueDate: "08/02/2022",
-  },
-
-  {id:"4",
-    name: "Go to park",
-    dueDate: "08/02/2022",
-  },
-  ];
+  const intialTodoItem = [];
 
 
 
@@ -33,10 +18,10 @@ function App() {
 
   const [todoItems , setTodoItems] = useState(intialTodoItem)
 
-  const handelNewItem = (itemName , itemDate) =>{
-    console.log(`new itemm added: ${itemName} DATE: ${itemDate}`)
+  const handelNewItem = (itemName , itemDate ) =>{
+    console.log(`new itemm added: ${itemName} DATE: ${itemDate} `);
 
-    const newTodoItems=[...todoItems ,{id:"1",
+    const newTodoItems=[...todoItems ,{id:Math.random(),
     name: itemName,
     dueDate: itemDate,
   }]
@@ -44,6 +29,16 @@ function App() {
   setTodoItems(newTodoItems);
 
   };
+
+  const handelDeleteItem = (todoItemName) =>{
+
+
+    const newTodoItemDelete = todoItems.filter( item => item.name !== todoItemName)
+     setTodoItems(newTodoItemDelete)
+
+    console.log(`to do item deleted ${todoItemName}`);
+
+  }
 
 
 
@@ -56,10 +51,16 @@ function App() {
 
       <h1>Todo App</h1>
       <div className="container text-center mt-5">
-    <AddTodo onNewItem ={handelNewItem}  />
-  
-    <TodoItems addItem={todoItems} />
+      
 
+        <AddTodo onNewItem ={handelNewItem}  />
+
+        {todoItems.length===0 && "sorry no content"}
+      
+    
+  
+    <TodoItems addItem={todoItems} onDeleteClick = {handelDeleteItem} />
+ 
 
 
 

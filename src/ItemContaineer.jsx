@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem"
 
-const TodoItems = ({addItem})=>{
+const TodoItems = ({addItem , onDeleteClick})=>{
  
   return(
    
@@ -8,7 +8,7 @@ const TodoItems = ({addItem})=>{
     {
       addItem.map(( data )=>(
         
-        <TodoItem key={data.id} todoName={data.name} todoDate={data.dueDate}/>
+        <TodoItem key={data.id} todoName={data.name} todoDate={data.dueDate} onDeleteClicking={onDeleteClick}  />
       )
     )} 
       
