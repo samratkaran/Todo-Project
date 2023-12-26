@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState , useRef } from "react";
+
 import "./App.css";
 import AddTodo from "./AddTodo";
 import TodoItems from "./TodoItems";
@@ -9,9 +10,10 @@ function App() {
   const intialTodoItem = [];
 
   const [todoItems, setTodoItems] = useState(intialTodoItem);
+ 
 
   const handelNewItem = (itemName, itemDate) => {
-    console.log(`new itemm added: ${itemName} DATE: ${itemDate} `);
+   
 
     const newTodoItems = [
       ...todoItems,
@@ -29,6 +31,8 @@ function App() {
 
     console.log(`to do item deleted ${todoItemName}`);
   };
+
+
 
   return (
     <div className="App">
